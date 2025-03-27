@@ -11,31 +11,37 @@ body {
     min-height: 100vh;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     background: #a5a6f6;
     position: relative;
     padding: 20px;
+    margin: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    height: auto;
 }
 
 .container {
     text-align: center;
-    padding: 2rem;
+    padding: 1rem;
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
-    border-radius: 30px;
+    border-radius: 20px;
     box-shadow: 0 8px 32px rgba(31, 38, 135, 0.1);
-    animation: float 6s ease-in-out infinite;
     z-index: 1;
     max-width: 90%;
-    width: 600px;
-    margin: auto;
+    width: 400px;
+    margin: 10px auto;
     position: relative;
+    overflow: visible;
+    height: auto;
 }
 
 h1 {
     color: #fff;
-    font-size: 3rem;
-    margin-bottom: 2.5rem;
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
     font-weight: 500;
     letter-spacing: -0.5px;
     font-family: 'Playfair Display', serif;
@@ -43,19 +49,30 @@ h1 {
 }
 
 .countdown {
-    display: flex;
-    gap: 2rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 0.8rem;
     justify-content: center;
-    margin-bottom: 2rem;
-    flex-wrap: wrap;
+    margin-bottom: 1rem;
+    max-width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+    aspect-ratio: 1;
 }
 
 .time-block {
     background: rgba(255, 255, 255, 0.15);
-    padding: 1.5rem;
-    border-radius: 20px;
-    min-width: 120px;
+    padding: 0.8rem;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     transition: transform 0.3s ease, background-color 0.3s ease;
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 1;
 }
 
 .time-block:hover {
@@ -64,18 +81,18 @@ h1 {
 }
 
 .number {
-    font-size: 3.5rem;
+    font-size: 2.2rem;
     color: #fff;
     font-weight: 500;
     line-height: 1;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.2rem;
 }
 
 .label {
     color: rgba(255, 255, 255, 0.9);
-    font-size: 0.85rem;
+    font-size: 0.7rem;
     text-transform: uppercase;
-    letter-spacing: 3px;
+    letter-spacing: 1.5px;
     font-weight: 300;
 }
 
@@ -187,13 +204,14 @@ h1 {
 
 /* Stars */
 .stars {
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     pointer-events: none;
     z-index: 0;
+    overflow: hidden;
 }
 
 .star {
@@ -245,4 +263,64 @@ h1 {
 @keyframes twinkle {
     0%, 100% { opacity: 0.2; }
     50% { opacity: 1; }
+}
+
+/* Remove all animations */
+.floating-wrapper, .container, .cloud, .butterfly, .bird {
+    animation: none !important;
+}
+
+@media (max-width: 768px) {
+    body {
+        padding: 8px;
+        min-height: 100vh;
+        height: auto;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        align-items: flex-start;
+        position: relative;
+    }
+
+    .container {
+        padding: 0.8rem;
+        margin: 8px auto;
+        width: 95%;
+        animation: none;
+        transform: none;
+        height: auto;
+        position: relative;
+    }
+
+    .countdown {
+        gap: 0.6rem;
+        max-width: 250px;
+        aspect-ratio: 1;
+    }
+
+    .time-block {
+        padding: 0.6rem;
+        aspect-ratio: 1;
+    }
+
+    .number {
+        font-size: 1.5rem;
+    }
+
+    .label {
+        font-size: 0.6rem;
+        letter-spacing: 1px;
+    }
+
+    /* Hide decorative elements on mobile */
+    .cloud, .bird, .butterfly, .stars {
+        display: none;
+    }
+}
+
+/* Add viewport height fix for mobile browsers */
+@supports (-webkit-touch-callout: none) {
+    body {
+        min-height: -webkit-fill-available;
+        height: auto;
+    }
 } 
