@@ -1,0 +1,192 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Montserrat:wght@300;400;500&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #a5a6f6;
+    overflow: hidden;
+    position: relative;
+}
+
+.container {
+    text-align: center;
+    padding: 3rem;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 30px;
+    box-shadow: 0 8px 32px rgba(31, 38, 135, 0.1);
+    animation: float 6s ease-in-out infinite;
+    z-index: 1;
+    max-width: 90%;
+    width: 600px;
+}
+
+h1 {
+    color: #fff;
+    font-size: 3rem;
+    margin-bottom: 2.5rem;
+    font-weight: 500;
+    letter-spacing: -0.5px;
+    font-family: 'Playfair Display', serif;
+    line-height: 1.2;
+}
+
+.countdown {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.time-block {
+    background: rgba(255, 255, 255, 0.15);
+    padding: 1.5rem;
+    border-radius: 20px;
+    min-width: 120px;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.time-block:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.number {
+    font-size: 3.5rem;
+    color: #fff;
+    font-weight: 500;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.label {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-weight: 300;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.cloud {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+    filter: blur(20px);
+    z-index: 0;
+}
+
+.cloud-1 {
+    width: 150px;
+    height: 150px;
+    top: 10%;
+    left: 10%;
+    animation: floatCloud 20s ease-in-out infinite;
+}
+
+.cloud-2 {
+    width: 100px;
+    height: 100px;
+    top: 60%;
+    right: 15%;
+    animation: floatCloud 15s ease-in-out infinite reverse;
+}
+
+.cloud-3 {
+    width: 120px;
+    height: 120px;
+    bottom: 10%;
+    left: 20%;
+    animation: floatCloud 18s ease-in-out infinite;
+}
+
+.cloud-4 {
+    width: 80px;
+    height: 80px;
+    top: 30%;
+    right: 30%;
+    animation: floatCloud 12s ease-in-out infinite reverse;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+@keyframes floatCloud {
+    0%, 100% {
+        transform: translate(0, 0);
+    }
+    25% {
+        transform: translate(-20px, 20px);
+    }
+    50% {
+        transform: translate(0, 40px);
+    }
+    75% {
+        transform: translate(20px, 20px);
+    }
+}
+
+.floating-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: radial-gradient(circle at center, transparent 0%, rgba(255, 255, 255, 0.1) 100%);
+    animation: pulse 8s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+.stars {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.star {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: #fff;
+    border-radius: 50%;
+    animation: twinkle 1s infinite;
+}
+
+@keyframes twinkle {
+    0%, 100% {
+        opacity: 0.2;
+    }
+    50% {
+        opacity: 1;
+    }
+} 
